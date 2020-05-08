@@ -3,6 +3,7 @@ require 'test_helper'
 class UsersEditTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:michael)
+    @non_activated_user = users(:non_activated_user)
   end
   
   test "unsuccessful edit" do
@@ -35,5 +36,12 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     @user.reload
     assert_equal name, @user.name
     assert_equal email, @user.email
+  end
+  
+  test "redirect root if show non activated user page" do
+    log_in_as(@user)
+    follow_redirect!
+    get user_path(@non_activated_user)
+    assert_redirected_to root_url
   end
 end
