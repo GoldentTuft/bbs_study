@@ -1,0 +1,10 @@
+<% provide(:title, 'All bbs threads') %>
+<h1>All bbs threads</h1>
+
+<%= will_paginate %>
+
+<ul class="bbs_threads">
+  <%= render @bbs_threads %>
+</ul>
+
+<%= will_paginate %>
