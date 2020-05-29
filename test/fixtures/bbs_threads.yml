@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+godzilla:
+  user_id: michael
+  title: "godzilla thread"
+  content: "godzilla content"
+  created_at: <%= 10.minutes.ago %>
+
+gamera:
+  user_id: michael
+  title: "gamera thread"
+  content: "gamera content"
+  created_at: <%= 2.hours.ago %>

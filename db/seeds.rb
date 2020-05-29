@@ -31,3 +31,12 @@ following = users[2..50]
 followers = users[3..40]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
+
+# BBSスレッド
+user = User.first
+user.bbs_threads.create!(
+  title: "first thread",
+  content: "fist content")
+user.bbs_threads.create!(
+  title: "second thread",
+  content: "second content")
