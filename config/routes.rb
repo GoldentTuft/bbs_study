@@ -23,5 +23,5 @@ Rails.application.routes.draw do
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
   
-  resources :bbs_threads
+  resources :bbs_threads, only: [:index, :create, :show, :destroy ]
 end

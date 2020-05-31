@@ -1,2 +1,10 @@
 <h1>BbsThreads#show</h1>
 
+<%= @bbs_thread.content %>
+
+<div>
+  <% if current_user?(@bbs_thread.user) %>
+    <%= link_to "delete", @bbs_thread, method: :delete,
+      data: { confirm: "You sure?" } %>
+  <% end %>
+</div>

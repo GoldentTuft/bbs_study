@@ -4,7 +4,7 @@ class BbsThreadTest < ActiveSupport::TestCase
   
   def setup
     @user = users(:michael)
-    @bbs_thread = BbsThread.new(title: "hoge", content: "Lorem ipsum")
+    @bbs_thread = @user.bbs_threads.build(title: "hoge", content: "Lorem ipsum")
   end
   
   test "should be valid" do

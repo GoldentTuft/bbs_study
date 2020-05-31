@@ -1,13 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 godzilla:
-  user_id: michael
+  user: michael
   title: "godzilla thread"
   content: "godzilla content"
   created_at: <%= 10.minutes.ago %>
 
 gamera:
-  user_id: michael
+  user: michael
   title: "gamera thread"
   content: "gamera content"
   created_at: <%= 2.hours.ago %>
+  
+radon:
+  user: archer
+  title: "radon thread"
+  content: "radon thread"
+  created_at: <%= 15.minutes.ago %>

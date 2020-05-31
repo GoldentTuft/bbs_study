@@ -1,6 +1,14 @@
 <% provide(:title, 'All bbs threads') %>
 <h1>All bbs threads</h1>
 
+<div>
+  <% if logged_in? and @bbs_thread %>
+    <%= render 'form' %>
+  <% else %>
+    anonymous
+  <% end %>
+</div>
+
 <%= will_paginate %>
 
 <ul class="bbs_threads">

@@ -40,3 +40,9 @@ user.bbs_threads.create!(
 user.bbs_threads.create!(
   title: "second thread",
   content: "second content")
+  
+99.times do |n|
+  title = "No.#{n} thread"
+  content = "No.#{n} content"
+  user.bbs_threads.create!(title: title, content: content)
+end
