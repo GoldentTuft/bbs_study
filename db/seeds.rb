@@ -34,15 +34,22 @@ followers.each { |follower| follower.follow(user) }
 
 # BBSスレッド
 user = User.first
-user.bbs_threads.create!(
-  title: "first thread",
-  content: "fist content")
-user.bbs_threads.create!(
-  title: "second thread",
-  content: "second content")
-  
-99.times do |n|
+50.times do |n|
   title = "No.#{n} thread"
   content = "No.#{n} content"
   user.bbs_threads.create!(title: title, content: content)
+end
+user = User.second
+title = "other user's thread"
+content = "other user's content"
+user.bbs_threads.create!(title: title, content: content)
+
+# BBSスレッドへの書き込み
+users = User.order(:created_at).take(2)
+50.times do |n|
+  content = "No.#{n} content"
+  users.each do |user|
+    BbsThread.first.user_posts.create!(content: content, user: user)
+    BbsThread.second.user_posts.create!(content: content, user: user)
+  end
 end

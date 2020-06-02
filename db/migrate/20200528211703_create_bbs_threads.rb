@@ -7,7 +7,6 @@ class CreateBbsThreads < ActiveRecord::Migration[5.1]
 
       t.timestamps
       
-      t.index :user_id
     end
   end
 end

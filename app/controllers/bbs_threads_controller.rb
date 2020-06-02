@@ -3,6 +3,8 @@ class BbsThreadsController < ApplicationController
   
   def show
     @bbs_thread = BbsThread.find(params[:id])
+    @user_post = current_user.user_posts.build(bbs_thread: @bbs_thread)
+    @all_posts = @bbs_thread.user_posts.paginate(page: params[:page])
   end
   
   def index

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+kakiko1:
+  bbs_thread_id: godzilla
+  user_id: michael
+  content: "kakiko1"
+
+kakiko2:
+  bbs_thread_id: godzilla
+  user_id: michael
+  content: "kakiko2"

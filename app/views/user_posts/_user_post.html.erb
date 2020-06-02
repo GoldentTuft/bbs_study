@@ -1,0 +1,9 @@
+<li id="user_post-<%= user_post.id %>">
+  <div><%= user_post.user.name %>
+    <div class="content"><%= user_post.content%></div>
+    <% if current_user?(user_post.user) %>
+      <%= link_to "delete", user_post, method: :delete,
+        data: { confirm: "You sure?" } %>
+    <% end %>
+  </div>
+</li>

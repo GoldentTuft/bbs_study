@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200528211703) do
+ActiveRecord::Schema.define(version: 20200531204126) do
 
   create_table "bbs_threads", force: :cascade do |t|
     t.integer "user_id"
@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 20200528211703) do
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_bbs_threads_on_user_id"
   end
 
   create_table "microposts", force: :cascade do |t|
@@ -39,6 +38,14 @@ ActiveRecord::Schema.define(version: 20200528211703) do
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
     t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
+  end
+
+  create_table "user_posts", force: :cascade do |t|
+    t.integer "bbs_thread_id"
+    t.integer "user_id"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

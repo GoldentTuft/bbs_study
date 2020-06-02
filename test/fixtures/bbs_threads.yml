@@ -17,3 +17,12 @@ radon:
   title: "radon thread"
   content: "radon thread"
   created_at: <%= 15.minutes.ago %>
+  
+
+<% 30.times do |n| %>
+bbs_thread_<%= n %>:
+  title: "#{n} thread"
+  content: <%= Faker::Lorem.sentence(5) %>
+  created_at: <%= 42.days.ago %>
+  user: michael
+<% end %>
