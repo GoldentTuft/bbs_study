@@ -5,7 +5,7 @@ class UserPostsController < ApplicationController
     @bbs_thread = BbsThread.find(params[:bbs_thread_id])
     @user_post = @bbs_thread.user_posts.build(user_post_params)
     @user_post.user_id = current_user.id
-
+  
     if @user_post.save
       flash[:success] = "UserPost created!"
     else

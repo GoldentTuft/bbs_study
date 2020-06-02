@@ -3,7 +3,6 @@ require 'test_helper'
 class UserPostTest < ActiveSupport::TestCase
   def setup
     @user = users(:michael)
-    # @bbs_thread = @user.bbs_threads.build(title: "hoge", content: "Lorem ipsum")
     @bbs_thread = bbs_threads(:godzilla)
     @user_post = @bbs_thread.user_posts.build(content: "Lorem ipsum", user: @user)
   end
