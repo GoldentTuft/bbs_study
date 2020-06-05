@@ -46,10 +46,12 @@ user.bbs_threads.create!(title: title, content: content)
 
 # BBSスレッドへの書き込み
 users = User.order(:created_at).take(2)
-50.times do |n|
+30.times do |n|
   content = "No.#{n} content"
   users.each do |user|
     BbsThread.first.user_posts.create!(content: content, user: user)
+    BbsThread.first.anonymous_posts.create!(content: content, password: "foobar")
     BbsThread.second.user_posts.create!(content: content, user: user)
+    BbsThread.second.anonymous_posts.create!(content: content, password: "foobar")
   end
 end

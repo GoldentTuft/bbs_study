@@ -17,13 +17,31 @@
   <%= will_paginate @all_posts %>
 <% end %>
 
+<% if @anonymous_posts %>
+  <%= will_paginate @anonymous_posts %>
+  <ul class="anonymous_posts">
+    <%= render @anonymous_posts %>
+  </ul>
+  <%= will_paginate @anonymous_posts %>
+<% end %>
+
 <div>
-  <%= form_for(@user_post) do |f| %>
+  <%= form_for(@bbs_post) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <div><%= hidden_field_tag :bbs_thread_id, @bbs_thread.id %></div>
-    <div class="field">
-      <%= f.text_area :content, placeholder: "content" %>
-    </div>
+    <% unless @user %>
+      <%= f.label "名前" %>
+      <%= f.text_field :name, class: 'form-control' %>
+    <% end %>
+    
+    <%= f.label "本文" %>
+    <%= f.text_area :content, class: 'form-control'  %>
+    
+    <% unless @user %>
+      <%= f.label "削除パス" %>
+      <%= f.text_field :password, class: 'form-control' %>
+    <% end %>
+
     <%= f.submit "Post", class: "btn btn-primary" %>
   <% end %>
 </div>

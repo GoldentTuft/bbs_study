@@ -25,4 +25,5 @@ Rails.application.routes.draw do
   
   resources :bbs_threads, only: [:index, :create, :show, :destroy ]
   resources :user_posts, only: [:create, :destroy]
+  resources :anonymous_posts, only: [:create, :destroy, :edit]
 end

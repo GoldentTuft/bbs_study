@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200531204126) do
+ActiveRecord::Schema.define(version: 20200602220905) do
+
+  create_table "anonymous_posts", force: :cascade do |t|
+    t.string "name"
+    t.text "content"
+    t.string "password_digest"
+    t.integer "bbs_thread_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bbs_thread_id"], name: "index_anonymous_posts_on_bbs_thread_id"
+  end
 
   create_table "bbs_threads", force: :cascade do |t|
     t.integer "user_id"
@@ -43,9 +53,11 @@ ActiveRecord::Schema.define(version: 20200531204126) do
   create_table "user_posts", force: :cascade do |t|
     t.integer "bbs_thread_id"
     t.integer "user_id"
-    t.string "content"
+    t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["bbs_thread_id"], name: "index_user_posts_on_bbs_thread_id"
+    t.index ["user_id"], name: "index_user_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

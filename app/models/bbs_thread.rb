@@ -4,5 +4,6 @@ class BbsThread < ApplicationRecord
   validates :content, presence: true, length: { maximum: 5000 }
   validates :user_id, presence: true
   default_scope -> { order(updated_at: :desc) }
-  has_many :user_posts
+  has_many :user_posts, dependent: :destroy
+  has_many :anonymous_posts, dependent: :destroy
 end

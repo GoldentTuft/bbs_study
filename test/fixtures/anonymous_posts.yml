@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+tokumei_kakiko1:
+  content: "hoge1"
+  password_digest: <%= User.digest('password') %>
+  
+tokumei_kakiko2:
+  content: "hoge2"
+  password_digest: <%= User.digest('foobar') %>

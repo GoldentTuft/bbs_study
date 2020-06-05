@@ -1,0 +1,13 @@
+<h1>AnonymousPosts#edit</h1>
+<p>Find me in app/views/anonymous_posts/edit.html.erb</p>
+<% if @anonymous_post %>
+  <%= form_for(@anonymous_post, html: {method: 'DELETE'}) do |f| %>
+    <%= f.label '削除パス' %>
+    <%= f.text_field :password,
+        class: 'form-control',
+        value: cookies.permanent.signed[:password_for_delete] %>
+    <%= f.submit "Delete",
+        class: "btn btn-primary",
+        data: { confirm: "You sure?" } %>
+  <% end %>
+<% end %>
