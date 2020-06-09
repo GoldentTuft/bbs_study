@@ -4,4 +4,5 @@ class UserPost < ApplicationRecord
   validates :content, presence: true, length: { maximum: 5000 }
   validates :user_id, presence: true
   validates :bbs_thread_id, presence: true
+  
 end

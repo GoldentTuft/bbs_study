@@ -16,7 +16,8 @@ ActiveRecord::Schema.define(version: 20200602220905) do
     t.string "name"
     t.text "content"
     t.string "password_digest"
-    t.integer "bbs_thread_id"
+    t.integer "bbs_thread_id", null: false
+    t.integer "post_number", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["bbs_thread_id"], name: "index_anonymous_posts_on_bbs_thread_id"
@@ -26,6 +27,7 @@ ActiveRecord::Schema.define(version: 20200602220905) do
     t.integer "user_id"
     t.string "title"
     t.string "content"
+    t.integer "total_posted", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -51,9 +53,10 @@ ActiveRecord::Schema.define(version: 20200602220905) do
   end
 
   create_table "user_posts", force: :cascade do |t|
-    t.integer "bbs_thread_id"
-    t.integer "user_id"
+    t.integer "bbs_thread_id", null: false
+    t.integer "user_id", null: false
     t.text "content"
+    t.integer "post_number", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["bbs_thread_id"], name: "index_user_posts_on_bbs_thread_id"

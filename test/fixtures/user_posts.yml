@@ -4,13 +4,16 @@ kakiko1:
   bbs_thread: godzilla
   user: michael
   content: "kakiko1"
-
+  post_number: 1
+  
 kakiko2:
   bbs_thread: godzilla
   user: michael
   content: "kakiko2"
+  post_number: 2
   
 kakiko3:
   bbs_thread: godzilla
   user: archer
   content: "kakiko3"
+  post_number: 3

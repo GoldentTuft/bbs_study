@@ -4,6 +4,7 @@ class CreateBbsThreads < ActiveRecord::Migration[5.1]
       t.integer :user_id
       t.string :title
       t.string :content
+      t.integer :total_posted, null: false, default: 0
 
       t.timestamps
       

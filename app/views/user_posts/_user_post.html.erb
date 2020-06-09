@@ -1,9 +1,14 @@
 <li id="user_post-<%= user_post.id %>">
-  <div><%= user_post.user.name %>
+  <div>
+    <span><%= user_post.post_number %>: </span>
+    <span><%= user_post.user.name %></span>
+    <span class="timestamp"><%= time_text(user_post.created_at) %></span>
+    <span class="delete_link">
+      <% if current_user?(user_post.user) %>
+        <%= link_to "delete", user_post, method: :delete,
+          data: { confirm: "You sure?" } %>
+      <% end %>
+    </span>
     <div class="content"><%= user_post.content%></div>
-    <% if current_user?(user_post.user) %>
-      <%= link_to "delete", user_post, method: :delete,
-        data: { confirm: "You sure?" } %>
-    <% end %>
   </div>
 </li>

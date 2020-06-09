@@ -1,47 +1,47 @@
 <h1>BbsThreads#show</h1>
 
-<%= @bbs_thread.content %>
-
-<div>
-  <% if current_user?(@bbs_thread.user) %>
-    <%= link_to "delete", @bbs_thread, method: :delete,
-      data: { confirm: "You sure?" } %>
-  <% end %>
-</div>
-
-<% if @all_posts %>
-  <%= will_paginate @all_posts %>
-  <ul class="all_posts">
-    <%= render @all_posts %>
-  </ul>
-  <%= will_paginate @all_posts %>
-<% end %>
-
-<% if @anonymous_posts %>
-  <%= will_paginate @anonymous_posts %>
-  <ul class="anonymous_posts">
-    <%= render @anonymous_posts %>
-  </ul>
-  <%= will_paginate @anonymous_posts %>
-<% end %>
-
-<div>
-  <%= form_for(@bbs_post) do |f| %>
-    <%= render 'shared/error_messages', object: f.object %>
-    <div><%= hidden_field_tag :bbs_thread_id, @bbs_thread.id %></div>
-    <% unless @user %>
-      <%= f.label "名前" %>
-      <%= f.text_field :name, class: 'form-control' %>
-    <% end %>
+<div class="bbs_thread">
+  <div>
+    <%= @bbs_thread.content %>
     
-    <%= f.label "本文" %>
-    <%= f.text_area :content, class: 'form-control'  %>
+    <span class="timestamp"><%= time_text(@bbs_thread.created_at) %></span>
     
-    <% unless @user %>
-      <%= f.label "削除パス" %>
-      <%= f.text_field :password, class: 'form-control' %>
-    <% end %>
+    <span class="delete_link">
+      <% if current_user?(@bbs_thread.user) %>
+        <%= link_to "delete", @bbs_thread, method: :delete,
+          data: { confirm: "You sure?" } %>
+      <% end %>
+    </span>
+  </div>
 
-    <%= f.submit "Post", class: "btn btn-primary" %>
+
+  <% if @all_posts %>
+    <%= will_paginate @all_posts %>
+    <ol>
+      <%= render @all_posts %>
+    </ol>
+    <%= will_paginate @all_posts %>
   <% end %>
+  
+  <div>
+    <%= form_for(@bbs_post) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <div><%= hidden_field_tag :bbs_thread_id, @bbs_thread.id %></div>
+      <% unless @user %>
+        <%= f.label "名前" %>
+        <%= f.text_field :name, class: 'form-control' %>
+      <% end %>
+      
+      <%= f.label "本文" %>
+      <%= f.text_area :content, class: 'form-control'  %>
+      
+      <% unless @user %>
+        <%= f.label "削除パス" %>
+        <%= f.text_field :password, class: 'form-control' %>
+      <% end %>
+  
+      <%= f.submit "Post", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
 </div>

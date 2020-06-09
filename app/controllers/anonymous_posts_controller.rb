@@ -2,9 +2,9 @@ class AnonymousPostsController < ApplicationController
   
   def create
     @bbs_thread = BbsThread.find(params[:bbs_thread_id])
-    @anonymous_post = @bbs_thread.anonymous_posts.build(anonymous_post_params)
+    @anonymous_post = AnonymousPost.new(anonymous_post_params)
   
-    if @anonymous_post.save
+    if @bbs_thread.push_post(@anonymous_post)
       flash[:success] = "AnonymousPost created!"
       cookies.permanent.signed[:password_for_delete] = params[:anonymous_post][:password]
     else
@@ -33,6 +33,6 @@ class AnonymousPostsController < ApplicationController
   private
   
     def anonymous_post_params
-      params.require(:anonymous_post).permit(:content, :password)
+      params.require(:anonymous_post).permit(:content, :password, :name)
     end
 end

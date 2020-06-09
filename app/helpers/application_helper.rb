@@ -9,4 +9,10 @@ module ApplicationHelper
       page_title + " | " + base_title
     end
   end
+  
+  def time_text(time)
+    if time
+      time.strftime('%Y/%m/%d %H:%M:%S')
+    end
+  end
 end

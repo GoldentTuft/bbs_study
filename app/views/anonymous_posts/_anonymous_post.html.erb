@@ -1,6 +1,13 @@
+<% if anonymous_post.valid? %>
 <li id="anonymous_post-<%= anonymous_post.id %>">
-  <div><%= anonymous_post.nickname %>
+  <div>
+    <span><%= anonymous_post.post_number %>: </span>
+    <span><%= anonymous_post.nickname %></span>
+    <span class="timestamp"><%= time_text(anonymous_post.created_at) %></span>
+    <span class="delete_link"><%= link_to "delete", edit_anonymous_post_path(anonymous_post) %></span>
     <div class="content"><%= anonymous_post.content%></div>
-    <%= link_to "delete", edit_anonymous_post_path(anonymous_post) %>
   </div>
 </li>
+<% else %>
+
+<% end %>

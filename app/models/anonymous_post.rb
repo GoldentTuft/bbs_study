@@ -30,7 +30,7 @@ class AnonymousPost < ApplicationRecord
   end
   
   def nickname
-    if self.name
+    unless self.name.blank?
       return self.name
     else
       return '名無し'

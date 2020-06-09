@@ -3,10 +3,11 @@ class UserPostsController < ApplicationController
   
   def create
     @bbs_thread = BbsThread.find(params[:bbs_thread_id])
-    @user_post = @bbs_thread.user_posts.build(user_post_params)
+    @user_post = UserPost.new(user_post_params)
     @user_post.user_id = current_user.id
+
   
-    if @user_post.save
+    if @bbs_thread.push_post(@user_post)
       flash[:success] = "UserPost created!"
     else
       flash[:danger] = @user_post.errors.full_messages.join(', ')

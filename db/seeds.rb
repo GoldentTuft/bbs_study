@@ -34,7 +34,7 @@ followers.each { |follower| follower.follow(user) }
 
 # BBSスレッド
 user = User.first
-50.times do |n|
+40.times do |n|
   title = "No.#{n} thread"
   content = "No.#{n} content"
   user.bbs_threads.create!(title: title, content: content)
@@ -46,12 +46,18 @@ user.bbs_threads.create!(title: title, content: content)
 
 # BBSスレッドへの書き込み
 users = User.order(:created_at).take(2)
-30.times do |n|
+10.times do |n|
   content = "No.#{n} content"
+  bbs_thread1 = BbsThread.first
+  bbs_thread2 = BbsThread.second
   users.each do |user|
-    BbsThread.first.user_posts.create!(content: content, user: user)
-    BbsThread.first.anonymous_posts.create!(content: content, password: "foobar")
-    BbsThread.second.user_posts.create!(content: content, user: user)
-    BbsThread.second.anonymous_posts.create!(content: content, password: "foobar")
+    user_post1 = UserPost.new(content: content, user: user)
+    bbs_thread1.push_post(user_post1)
+    user_post2 = UserPost.new(content: content, user: user)
+    bbs_thread2.push_post(user_post2)
+    anonymous_post1 = AnonymousPost.new(content: content, password: "foobar")
+    bbs_thread1.push_post(anonymous_post1)
+    anonymous_post2 = AnonymousPost.new(content: content, password: "foobar")
+    bbs_thread2.push_post(anonymous_post2)
   end
 end

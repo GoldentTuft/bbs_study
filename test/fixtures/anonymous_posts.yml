@@ -3,7 +3,11 @@
 tokumei_kakiko1:
   content: "hoge1"
   password_digest: <%= User.digest('password') %>
+  post_number: 4
+  bbs_thread: godzilla
   
 tokumei_kakiko2:
   content: "hoge2"
   password_digest: <%= User.digest('foobar') %>
+  post_number: 5
+  bbs_thread: godzilla
