@@ -6,6 +6,7 @@ class BbsThreadsController < ApplicationController
     @user = current_user
     if @user
       @bbs_post = @user.user_posts.build(bbs_thread: @bbs_thread)
+      @watch = Watch.find_by(user_id: @user.id, bbs_thread_id: @bbs_thread.id)
     else
       @bbs_post = AnonymousPost.new # (1)
       # @bbs_post = @bbs_thread.anonymous_posts.build # (2)
@@ -37,6 +38,7 @@ class BbsThreadsController < ApplicationController
   def index
     if logged_in?
       @bbs_thread = current_user.bbs_threads.build
+      @watch_bbs_threads = current_user.watch_bbs_threads
     end
     @bbs_threads = BbsThread.paginate(page: params[:page])
   end

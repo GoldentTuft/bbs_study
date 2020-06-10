@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :bbs_threads
   has_many :user_posts, dependent: :destroy
+  has_many :watches, foreign_key: "user_id", dependent: :destroy
+  has_many :watch_bbs_threads, through: :watches, source: :bbs_thread
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save :downcase_email
   before_create :create_activation_digest

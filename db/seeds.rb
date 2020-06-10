@@ -61,3 +61,8 @@ users = User.order(:created_at).take(2)
     bbs_thread2.push_post(anonymous_post2)
   end
 end
+
+# Watch
+user = User.first
+Watch.new(user: user, bbs_thread: BbsThread.first).save
+Watch.new(user: user, bbs_thread: BbsThread.second).save

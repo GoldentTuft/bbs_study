@@ -1,18 +1,29 @@
 <% provide(:title, 'All bbs threads') %>
+
+<h1>Watch bbs threads</h1>
+
+<% if @watch_bbs_threads.present? %>
+  <ul class="watch_bbs_threads">
+    <%= render @watch_bbs_threads %>  
+  </ul>
+<% end %>
+
 <h1>All bbs threads</h1>
 
-<div>
-  <% if logged_in? and @bbs_thread %>
-    <%= render 'form' %>
-  <% else %>
-    anonymous
-  <% end %>
-</div>
+<% if @bbs_threads.present? %>
+  <%= will_paginate %>
+  <ul class="bbs_threads">
+    <%= render @bbs_threads %>
+  </ul>
+  <%= will_paginate %>
+<% end %>
 
-<%= will_paginate %>
-
-<ul class="bbs_threads">
-  <%= render @bbs_threads %>
-</ul>
-
-<%= will_paginate %>
+<% if @bbs_thread.present? %>
+  <div>
+    <% if logged_in? and @bbs_thread %>
+      <%= render 'form' %>
+    <% else %>
+      anonymous
+    <% end %>
+  </div>
+<% end %>
