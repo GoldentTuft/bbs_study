@@ -1,8 +1,9 @@
 <% provide(:title, 'All bbs threads') %>
 
-<h1>Watch bbs threads</h1>
+
 
 <% if @watch_bbs_threads.present? %>
+  <h1>Watch bbs threads</h1>
   <ul class="watch_bbs_threads">
     <%= render @watch_bbs_threads %>  
   </ul>

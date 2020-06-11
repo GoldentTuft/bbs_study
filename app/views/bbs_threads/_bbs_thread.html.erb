@@ -1,3 +1,8 @@
-<li>
+<div>
   <%= link_to bbs_thread.title, bbs_thread %>
-</li>
+  <% if bbs_thread.last_post %>
+    <div class="indent_block">
+      <%= render bbs_thread.last_post %>
+    </div>
+  <% end %>
+</div>

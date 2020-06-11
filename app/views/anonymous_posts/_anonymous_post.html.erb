@@ -1,13 +1,16 @@
 <% if anonymous_post.valid? %>
-<li id="anonymous_post-<%= anonymous_post.id %>">
-  <div>
-    <span><%= anonymous_post.post_number %>: </span>
-    <span><%= anonymous_post.nickname %></span>
-    <span class="timestamp"><%= time_text(anonymous_post.created_at) %></span>
-    <span class="delete_link"><%= link_to "delete", edit_anonymous_post_path(anonymous_post) %></span>
-    <div class="content"><%= anonymous_post.content%></div>
+<div class="thread_post" id="anonymous_post-<%= anonymous_post.id %>">
+  <div class="thread_post_header">
+    <span class="thread_post_header_number"><%= anonymous_post.post_number %> </span>
+    <span class="thread_post_header_name"><%= anonymous_post.nickname %></span>
+    <span class="thread_post_header_timestamp"><%= time_text(anonymous_post.created_at) %></span>
+    <span class="thread_post_header_delete_link"><%= link_to "delete", edit_anonymous_post_path(anonymous_post) %></span>
   </div>
-</li>
+  <div class="thread_post_body">
+    <div class="thread_post_body_avatar"><%= gravatar_for(User.new(email: 'example774@none.org'), size: 50) %></div>
+    <div class="thread_post_bodY_content"><%= anonymous_post.content%></div>
+  </div>
+</div>
 <% else %>
 
 <% end %>

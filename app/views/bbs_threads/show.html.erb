@@ -1,19 +1,24 @@
 <h1>BbsThreads#show</h1>
 
 <div class="bbs_thread">
-  <div>
-    <%= @bbs_thread.content %>
-    
-    <span class="timestamp"><%= time_text(@bbs_thread.created_at) %></span>
-    
-    <span class="delete_link">
-      <% if current_user?(@bbs_thread.user) %>
-        <%= link_to "delete", @bbs_thread, method: :delete,
-          data: { confirm: "You sure?" } %>
-      <% end %>
-    </span>
+
+  <div class="thread_post">
+    <div class="thread_post_header">
+      <span class="thread_post_header_name"><%= @bbs_thread.user.name %></span>
+      <span class="thread_post_header_timestamp"><%= time_text(@bbs_thread.created_at) %></span>
+      <span class="thread_post_header_delete_link">
+        <% if current_user?(@bbs_thread.user) %>
+          <%= link_to "delete", @bbs_thread, method: :delete,
+            data: { confirm: "You sure?" } %>
+        <% end %>
+      </span>
+    </div>
+    <div class="thread_post_body">
+      <div class="thread_post_body_avatar"><%= link_to gravatar_for(@bbs_thread.user, size: 50), @bbs_thread.user %></div>
+      <div class="thread_post_body_content"><%= @bbs_thread.content %></div>
+    </div>
   </div>
-  
+
   <div>
     <% if logged_in? %>
       <% unless @watch %>
@@ -28,13 +33,12 @@
       <% end %>
     <% end %>
   </div>
-
+  
+  <div class="border"></div>
 
   <% if @all_posts %>
     <%= will_paginate @all_posts %>
-    <ol>
-      <%= render @all_posts %>
-    </ol>
+    <%= render @all_posts %>
     <%= will_paginate @all_posts %>
   <% end %>
   

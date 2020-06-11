@@ -294,36 +294,53 @@ span.picture {
 }
 
 /* bbs_thread */
-.bbs_thread {
-
+.thread_post {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
   
-    ol {
-      list-style: none;
-      padding: 0;
+  &_header {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    
+    &_number {
     }
     
-    li {
-      padding: 10px 0;
-      border-top: 1px solid #e8e8e8;
+    &_name {
+      margin-left: 30px;  
     }
-      
-    .timestamp {
+    
+    &_timestamp {
       color: $gray-light;
       margin-left: 30px;
     }
     
-    .delete_link {
+    &_delete_link {
+      color: $gray-light;
       margin-left: 30px;
-      
-      a {
-        color: $gray-light;
-      }
+    }
+  }
+  
+  &_body {
+    display: flex;
+    flex-direction: row;
+    
+    &_avatar {
+      position: related;
     }
     
-    .content {
-      margin-top: 20px;
+    &_content {
     }
-    
-  
-  
+  }
+}
+
+.indent_block {
+  margin-left: 30px;
+}
+
+.border {
+  border-top: 1px solid $gray-medium-light;
+  margin-top: 10px;
+  margin-bottom: 40px
 }
