@@ -8,7 +8,13 @@
   </div>
   <div class="thread_post_body">
     <div class="thread_post_body_avatar"><%= gravatar_for(User.new(email: 'example774@none.org'), size: 50) %></div>
-    <div class="thread_post_bodY_content"><%= anonymous_post.content%></div>
+    <div class="thread_post_bodY_content">
+      <% if controller.action_name == "index" %>
+        <%= anonymous_post.content_for_catalog %>
+      <% else %>
+        <%= anonymous_post.content %>
+      <% end %>
+    </div>
   </div>
 </div>
 <% else %>

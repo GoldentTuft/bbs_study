@@ -15,6 +15,12 @@
     <div class="thread_post_body_avatar">
       <%= link_to gravatar_for(user_post.user, size: 50), user_post.user %>
     </div>
-    <div class="thread_post_body_content"><%= user_post.content%></div>
+    <div class="thread_post_body_content">
+      <% if controller.action_name == "index" %>
+        <%= user_post.content_for_catalog %>
+      <% else %>
+        <%= user_post.content %>
+      <% end %>
+    </div>
   </div>
 </div>

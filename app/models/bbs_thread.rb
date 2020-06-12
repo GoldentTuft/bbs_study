@@ -20,18 +20,14 @@ class BbsThread < ApplicationRecord
   end
   
   def last_post
-    user_post = self.user_posts.last
-    anonymous_post = self.anonymous_posts.last
-    unless anonymous_post
-      return user_post
-    end
-    unless user_post
-      return anonymous_post
-    end
-    if user_post.created_at >= anonymous_post.created_at
-      return user_post
-    else
-      return anonymous_post
+    last_posts = [
+        self.user_posts.last,
+        self.anonymous_posts.last
+      ]
+      
+    return last_posts.compact.max do |a, b|
+      a.created_at <=> b.created_at
     end
   end
+  
 end

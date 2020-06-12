@@ -36,4 +36,9 @@ class AnonymousPost < ApplicationRecord
       return '名無し'
     end
   end
+  
+  def content_for_catalog
+    self.content.truncate(140)
+  end
+  
 end

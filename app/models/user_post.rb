@@ -5,4 +5,7 @@ class UserPost < ApplicationRecord
   validates :user_id, presence: true
   validates :bbs_thread_id, presence: true
   
+  def content_for_catalog
+    self.content.truncate(140)
+  end
 end
