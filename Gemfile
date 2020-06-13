@@ -9,7 +9,8 @@ gem 'faker',          '1.7.3'
 gem 'carrierwave',             '1.2.2'
 # gem 'mini_magick',             '4.7.0'
 gem 'mini_magick',             '4.9.4'
-gem 'will_paginate',           '3.1.6'
+# gem 'will_paginate',           '3.1.6'
+gem 'will_paginate',           '3.3.0'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'bootstrap-sass', '3.3.7'
 gem 'puma',         '3.9.1'
@@ -33,9 +34,12 @@ group :development do
 end
 
 group :test do
-  gem 'rails-controller-testing', '1.0.2'
-  gem 'minitest',                 '5.10.3'
-  gem 'minitest-reporters',       '1.1.14'
+  # gem 'rails-controller-testing', '1.0.2'
+  gem 'rails-controller-testing', '1.0.4'
+  # gem 'minitest',                 '5.10.3'
+  gem 'minitest',                 '5.14.1'
+  # gem 'minitest-reporters',       '1.1.14'
+  gem 'minitest-reporters',       '1.4.2'
   gem 'guard',                    '2.13.0'
   gem 'guard-minitest',           '2.4.4'
 end
