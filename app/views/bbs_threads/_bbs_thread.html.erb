@@ -1,27 +1,31 @@
-<div>
-  <%= link_to bbs_thread.title, bbs_thread %>
-  
-  <div class="thread_post" id="bbs_thread-<%= bbs_thread.id %>">
-    <div class="thread_post_header">
-      <span class="thread_post_header_number">0 </span>
-      <span class="thread_post_header_name"><%= bbs_thread.user.name %></span>
-      <span class="thread_post_header_timestamp"><%= time_text(bbs_thread.created_at) %></span>
-      <span class="thread_post_header_delete_link">
-        <% if current_user?(bbs_thread.user) %>
-          <%= link_to "delete", bbs_thread, method: :delete,
-            data: { confirm: "You sure?" } %>
-        <% end %>
-      </span>
-    </div>
-    <div class="thread_post_body">
-      <div class="thread_post_body_avatar"><%= gravatar_for(bbs_thread.user, size: 50) %></div>
-      <div class="thread_post_bodY_content"><%= bbs_thread.content%></div>
-    </div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <%= link_to bbs_thread.title, bbs_thread %>
   </div>
-
-  <% if bbs_thread.last_post %>
-    <div class="indent_block">
-      <%= render bbs_thread.last_post %>
+  
+  <div class="panel-body">
+    <div class="thread_post" id="bbs_thread-<%= bbs_thread.id %>">
+      <div class="thread_post_header">
+        <span class="thread_post_header_number">0 </span>
+        <span class="thread_post_header_name"><%= bbs_thread.user.name %></span>
+        <span class="thread_post_header_timestamp"><%= time_text(bbs_thread.created_at) %></span>
+        <span class="thread_post_header_delete_link">
+          <% if current_user?(bbs_thread.user) %>
+            <%= link_to "delete", bbs_thread, method: :delete,
+              data: { confirm: "You sure?" } %>
+          <% end %>
+        </span>
+      </div>
+      <div class="thread_post_body">
+        <div class="thread_post_body_avatar"><%= gravatar_for(bbs_thread.user, size: 50) %></div>
+        <div class="thread_post_bodY_content"><%= bbs_thread.content%></div>
+      </div>
     </div>
-  <% end %>
+  
+    <% if bbs_thread.last_post %>
+      <div class="indent_block">
+        <%= render bbs_thread.last_post %>
+      </div>
+    <% end %>
+  </div>
 </div>
