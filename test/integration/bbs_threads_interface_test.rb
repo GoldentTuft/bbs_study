@@ -4,6 +4,8 @@ class BbsThreadsInterfaceTest < ActionDispatch::IntegrationTest
 
   def setup
     @user = users(:michael)
+    @bbs_thread = bbs_threads(:godzilla)
+    @watch = watches(:michael_watch)
   end
   
   test "bbs_thread interface" do
@@ -17,4 +19,14 @@ class BbsThreadsInterfaceTest < ActionDispatch::IntegrationTest
     get bbs_thread_path(bbs_threads(:radon))
     assert_select 'a', text: 'delete', count: 0
   end
+  
+  test "follow and unfollow" do
+    log_in_as(@user)
+    assert_difference "@bbs_thread.followers.count", -1 do
+      delete watch_path(@watch)
+    end
+    assert_difference "@bbs_thread.followers.count", 1 do
+      post watches_path, params: { bbs_thread_id: @bbs_thread.id }
+    end
+  end 
 end

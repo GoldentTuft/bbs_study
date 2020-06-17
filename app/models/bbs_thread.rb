@@ -7,7 +7,7 @@ class BbsThread < ApplicationRecord
   has_many :user_posts, dependent: :destroy
   has_many :anonymous_posts, dependent: :destroy
   has_many :watches, foreign_key: "bbs_thread_id", dependent: :destroy
-  has_many :folowers, through: :watches, source: :user
+  has_many :followers, through: :watches, source: :user
   
   def push_post(post_item)
     self.update_attributes(total_posted: self.total_posted + 1)
