@@ -6,6 +6,8 @@ class BbsThread < ApplicationRecord
   default_scope -> { order(updated_at: :desc) }
   has_many :user_posts, dependent: :destroy
   has_many :anonymous_posts, dependent: :destroy
+  has_many :watches, foreign_key: "bbs_thread_id", dependent: :destroy
+  has_many :folowers, through: :watches, source: :user
   
   def push_post(post_item)
     self.update_attributes(total_posted: self.total_posted + 1)
@@ -30,4 +32,7 @@ class BbsThread < ApplicationRecord
     end
   end
   
+  def count_post
+    self.user_posts.count + self.anonymous_posts.count
+  end
 end
