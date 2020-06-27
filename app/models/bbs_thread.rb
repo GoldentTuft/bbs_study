@@ -21,6 +21,25 @@ class BbsThread < ApplicationRecord
     end
   end
   
+  def all_posts
+    res = self.user_posts +  self.anonymous_posts
+    res.sort! do |f,s|
+      if !f || !f.created_at
+        1
+      elsif !s || !s.created_at
+        -1
+      else
+        f.created_at <=> s.created_at
+      end
+    end
+    return res
+  end
+  
+  def page_count
+    sum = self.user_posts.count + self.anonymous_posts.count
+    return sum / WillPaginate.per_page + 1
+  end
+  
   def last_post
     last_posts = [
         self.user_posts.last,

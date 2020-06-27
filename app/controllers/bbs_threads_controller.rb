@@ -19,20 +19,21 @@ class BbsThreadsController < ApplicationController
     end
     # puts "----- #{@bbs_thread.anonymous_posts.to_a.count} -----"
     # puts "===== #{@bbs_thread.anonymous_posts.count} ====="
-    @all_posts = @bbs_thread.user_posts +  @bbs_thread.anonymous_posts
-    @all_posts.sort! do |f,s|
-      if !f || !f.created_at
-        1
-      elsif !s || !s.created_at
-        -1
-      else
-        f.created_at <=> s.created_at
-      end
-    end
+    # @all_posts = @bbs_thread.user_posts +  @bbs_thread.anonymous_posts
+    # @all_posts.sort! do |f,s|
+    #   if !f || !f.created_at
+    #     1
+    #   elsif !s || !s.created_at
+    #     -1
+    #   else
+    #     f.created_at <=> s.created_at
+    #   end
+    # end
     # @all_posts.sort! do |f,s|
     #   f.created_at <=> s.created_at
     # end
-    @all_posts = @all_posts.paginate(page: params[:page])
+    @all_posts = @bbs_thread.all_posts.paginate(page: params[:page])
+    # @all_posts = @all_posts.paginate(page: params[:page])
   end
   
   def index

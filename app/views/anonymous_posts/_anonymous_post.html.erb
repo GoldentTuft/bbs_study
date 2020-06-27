@@ -1,5 +1,5 @@
 <% if anonymous_post.valid? %>
-<div class="thread_post" id="anonymous_post-<%= anonymous_post.id %>">
+<div class="thread_post" id="post-<%= anonymous_post.post_number %>">
   <div class="thread_post_header">
     <span class="thread_post_header_number"><%= anonymous_post.post_number %> </span>
     <span class="thread_post_header_name"><%= anonymous_post.nickname %></span>
